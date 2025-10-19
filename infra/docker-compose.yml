@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo:4.4
+    container_name: ah_mongo
+    restart: unless-stopped
+    volumes:
+      - ./data/mongo:/data/db
+    ports:
+      - "27017:27017"
+
+  cowrie:
+    image: cowrie/cowrie:latest
+    container_name: ah_cowrie
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./honeypot/cowrie/log:/cowrie/log
+      - ./honeypot/cowrie/etc:/cowrie/cowrie.cfg.d
+    environment:
+      - TZ=Asia/Kolkata
+    ports:
+      - "2222:2222"
+
+  log-forwarder:
+    build:
+      context: ./forwarder
+      dockerfile: Dockerfile
+    container_name: ah_forwarder
+    restart: unless-stopped
+    depends_on:
+      - mongo
+      - cowrie
+    volumes:
+      - ../honeypot/cowrie/log:/cowrie/log:ro
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+
+
+
