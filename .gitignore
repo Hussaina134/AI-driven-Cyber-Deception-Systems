@@ -1,8 +1,10 @@
-# Docker / MongoDB data
-infra/data/mongo/
-# Docker volumes (optional)
-**/log/*.json
-# Python virtual environment
+
 venv/
 __pycache__/
 *.pyc
+infra/data/mongo/
+honeypot/cowrie/log/
+data/
+*.pcap
+*.db
+.ipynb_checkpoints/
