@@ -1,8 +1,30 @@
-# Docker / MongoDB data
+!notebooks/features_agg.csv
+!notebooks/features_clusters.csv
+!notebooks/week4_baseline_results.csv
+!notebooks/sessions_agg.csv
+
+# 🔸 Ignore temporary/intermediate files
+features.csv
+sessions.json
+notebooks/features_direct.csv
+
+# 🔸 Jupyter auto-saves
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# 🔸 Docker & Mongo data
 infra/data/mongo/
-# Docker volumes (optional)
-**/log/*.json
-# Python virtual environment
+honeypot/cowrie/log/
+
+# 🔸 Python environments & caches
 venv/
 __pycache__/
 *.pyc
+*.db
+*.pcap
+
+# 🔸 OS files
+.DS_Store
+Thumbs.db
+
+# ==========================================================================
