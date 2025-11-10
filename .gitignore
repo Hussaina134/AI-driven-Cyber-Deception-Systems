@@ -28,3 +28,13 @@ __pycache__/
 Thumbs.db
 
 # ==========================================================================
+
+venv/
+__pycache__/
+*.pyc
+infra/data/mongo/
+honeypot/cowrie/log/
+data/
+*.pcap
+*.db
+.ipynb_checkpoints/

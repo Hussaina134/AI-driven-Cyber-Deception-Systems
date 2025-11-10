@@ -1,0 +1,18 @@
+[
+  {
+    "session_id": "1.2.3.4-na",
+    "src_ip": "1.2.3.4",
+    "start": null,
+    "end": null,
+    "events": [
+      {
+        "_id": "68f607bbb10cf72b09c6787d",
+        "timestamp": "2025-10-21 12:00:00",
+        "src_ip": "1.2.3.4",
+        "event": "login_attempt",
+        "username": "test",
+        "password": "pass"
+      }
+    ]
+  }
+]
