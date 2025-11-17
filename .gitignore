@@ -71,3 +71,4 @@ controller/linucb.pkl
 
 # trained models
 models/
+controller/actions/
