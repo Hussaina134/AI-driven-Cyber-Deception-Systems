@@ -1,0 +1,12 @@
+{
+  "features_order": [
+    "duration",
+    "cmd_count",
+    "unique_cmds",
+    "downloads",
+    "reward",
+    "dummy1",
+    "dummy2",
+    "dummy3"
+  ]
+}

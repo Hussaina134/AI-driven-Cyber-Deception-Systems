@@ -1,0 +1,8 @@
+
+fastapi
+uvicorn[standard]
+pymongo
+numpy
+pandas
+requests
+
