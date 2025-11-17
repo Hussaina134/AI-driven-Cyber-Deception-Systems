@@ -38,3 +38,36 @@ data/
 *.pcap
 *.db
 .ipynb_checkpoints/
+# runtime / data
+infra/data/
+**/log/*.json
+*.db
+*.pcap
+venv/
+controller/venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+# secrets
+*.env
+
+# virtualenvs & python artifacts
+controller/venv/
+venv/
+__pycache__/
+*.pyc
+
+# runtime / data / logs
+infra/data/
+infra/forwarder/backups/
+testlogs/
+uvicorn.log
+*.db
+*.pcap
+
+# notebook checkpoints
+.ipynb_checkpoints/
+controller/linucb.pkl
+
+# trained models
+models/
