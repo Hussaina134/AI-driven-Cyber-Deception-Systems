@@ -72,3 +72,24 @@ controller/linucb.pkl
 # trained models
 models/
 controller/actions/
+
+# virtualenvs & site packages
+venv/
+controller/venv/
+*.egg-info/
+__pycache__/
+*.pyc
+
+# runtime / DB / logs / large data
+infra/data/
+infra/forwarder/backups/
+testlogs/
+uvicorn.log
+*.db
+*.pcap
+notebooks/*.csv
+notebooks/*.db
+controller/linucb.pkl
+
+# notebook checkpoints
+.ipynb_checkpoints/
