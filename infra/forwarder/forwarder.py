@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import geoip2.database
 import os
 import time
 import json
@@ -15,7 +16,11 @@ from bson import json_util
 CONTROLLER_URL = os.getenv("CONTROLLER_URL", "http://host.docker.internal:9000")
 # MONGO selection helper will try env, then localhost, then docker hostname 'mongo'
 _MONGO_ENV = os.getenv("MONGO_URI", None)
+GEOIP_DB = "data/GeoLite2-City.mmdb"
+geo_reader = None
 
+if os.path.exists(GEOIP_DB):
+    geo_reader = geoip2.database.Reader(GEOIP_DB)
 def _pick_mongo_uri():
     candidates = []
     if _MONGO_ENV:
@@ -54,6 +59,20 @@ sessions = defaultdict(lambda: {
 })
 
 # ----- Controller helpers -----
+def enrich_geo(ip):
+    if not geo_reader or not ip:
+        return None
+    try:
+        r = geo_reader.city(ip)
+        return {
+            "country": r.country.name,
+            "city": r.city.name,
+            "lat": r.location.latitude,
+            "lon": r.location.longitude
+        }
+    except:
+        return None
+
 def send_to_controller(session_id, context):
     try:
         resp = requests.post(
@@ -190,6 +209,7 @@ def process_event_obj(obj):
             print(f"[controller decide] session={session_id} action={sess['action']} id={sess['action_id']}")
 
 def finish_session(session_id, session_data):
+    geo = enrich_geo(session_data.get("src_ip"))
     try:
         features = compute_features(session_data)
         reward = compute_reward(session_data)
@@ -198,6 +218,7 @@ def finish_session(session_id, session_data):
         agg_doc = {
             "session_id": session_id,
             "src_ip": session_data.get("src_ip"),
+            "geo": geo,
             "start": session_data.get("first_ts").isoformat() if session_data.get("first_ts") else None,
             "end": session_data.get("last_ts").isoformat() if session_data.get("last_ts") else None,
             "duration": features["duration"],

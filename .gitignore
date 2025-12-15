@@ -72,3 +72,46 @@ controller/linucb.pkl
 # trained models
 models/
 controller/actions/
+
+# virtualenvs & site packages
+venv/
+controller/venv/
+*.egg-info/
+__pycache__/
+*.pyc
+
+# runtime / DB / logs / large data
+infra/data/
+infra/forwarder/backups/
+testlogs/
+uvicorn.log
+*.db
+*.pcap
+notebooks/*.csv
+notebooks/*.db
+controller/linucb.pkl
+
+# notebook checkpoints
+.ipynb_checkpoints/
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+controller/venv/
+
+# Logs & runtime files
+*.log
+testlogs/
+infra/forwarder/backups/
+
+# Generated data / models
+controller/actions/
+*.pkl
+
+# OS junk
+.DS_Store
+# GeoIP databases (licensed / local)
+GeoLite2-City_*/
+*.mmdb
