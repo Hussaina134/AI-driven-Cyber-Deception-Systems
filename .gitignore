@@ -93,3 +93,25 @@ controller/linucb.pkl
 
 # notebook checkpoints
 .ipynb_checkpoints/
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+controller/venv/
+
+# Logs & runtime files
+*.log
+testlogs/
+infra/forwarder/backups/
+
+# Generated data / models
+controller/actions/
+*.pkl
+
+# OS junk
+.DS_Store
+# GeoIP databases (licensed / local)
+GeoLite2-City_*/
+*.mmdb
